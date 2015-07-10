@@ -1,23 +1,13 @@
 'use strict';
-
-/**
- * @ngdoc overview
- * @name ogreApp
- * @description
- * # ogreApp
- *
+/* # ogreApp
+ 
  * Main module of the application.
  */
-angular
-  .module('ogreApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
+
+(function ogreAppIIFE() {
+  var app = angular.module('customersApp', ['ngRoute', 'ngAnimate', 'ngResource', 'ngSanitize', 'ngTouch']);
+
+  app.config(function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -33,3 +23,5 @@ angular
         redirectTo: '/'
       });
   });
+
+})();

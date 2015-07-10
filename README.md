@@ -1,7 +1,6 @@
-# ogre
+# Ogre Buddies
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.12.1.
+Ogre Buddies is a one-stop shop for having fun in the outdoors.  Find the gear you need and the people to use it with.
 
 ## Build & development
 

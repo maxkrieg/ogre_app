@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <meta name="ogre app" content="">
+    <meta name="ogreApp" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.css"  media="screen,projection"/>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -16,16 +18,13 @@
   </head>
   <body ng-app="ogreApp">
 
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+    <header>
+      <!-- <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
-
             <a class="navbar-brand" href="#/">ogre</a>
           </div>
-
           <div class="collapse">
-
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
@@ -33,30 +32,54 @@
             </ul>
           </div>
         </div>
+      </div> -->
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo left">Ogre Buddies</a>
+
+            <ul class="right hide-on-small-and-down">
+              <li><a href="#/about">My Gear</a></li>
+              <li><a href="">My Rentals</a></li>
+              <li><a href="">Search</a></li>
+            </ul>
+
+          </div>
+        </nav>
       </div>
-    </div>
-
-    <div class="container">
-
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
+    </header>
+    <main
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+      <div ng-view></div>
       </div>
-    </div>
+    </main>
+<!--     <div class="footer">
+      <div class="container">
+        <h3>Index Footer</h3>
+      </div>
+    </div> -->
+
+    <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container">
+        © 2014 Copyright Text
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
 
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/materialize/dist/js/materialize.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

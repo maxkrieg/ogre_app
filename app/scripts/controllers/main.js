@@ -1,10 +1,5 @@
 'use strict';
 
-
-
-
-
-
 angular.module('ogreApp')
   .controller('MainCtrl', function() {
     this.awesomeThings = [
@@ -71,6 +66,6 @@ angular.module('ogreApp')
   CustomersController.$inject = ['customersFactory', 'appSettings'];
 
   // The Controller is part of the module.
-  angular.module('customersApp').controller('customersController', CustomersController);
+  angular.module('ogreApp').controller('customersController', CustomersController);
 
 })();

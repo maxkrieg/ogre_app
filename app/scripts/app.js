@@ -5,7 +5,7 @@
  */
 
 (function ogreAppIIFE() {
-  var app = angular.module('customersApp', ['ngRoute', 'ngAnimate', 'ngResource', 'ngSanitize', 'ngTouch']);
+  var app = angular.module('ogreApp', ['ngRoute', 'ngAnimate', 'ngResource', 'ngSanitize', 'ngTouch']);
 
   app.config(function($routeProvider) {
     $routeProvider

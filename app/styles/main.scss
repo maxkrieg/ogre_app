@@ -1,21 +1,17 @@
 // bower:scss
 // endbower
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+
+main {
+    flex: 1 0 auto;
 }
 
 body {
   padding: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
 
   /* Make the masthead heading the same height as the navigation */
   h3 {
@@ -24,25 +20,24 @@ body {
     line-height: 40px;
     padding-bottom: 19px;
   }
-}
+
 
 .container-narrow > hr {
   margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
-.jumbotron {
+.main-page {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
 
   .btn {
-    font-size: 21px;
+    font-size: 20px;
   }
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    // max-width: 730px;
   }
 }

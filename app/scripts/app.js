@@ -7,6 +7,12 @@
 (function ogreAppIIFE() {
   var app = angular.module('ogreApp', ['ngRoute', 'ngAnimate', 'ngResource', 'ngSanitize', 'ngTouch']);
 
+  app.config(['$httpProvider',
+    function($httpProvider) {
+      $httpProvider.defaults.headers.common.Authorization = 'Token token=' + localStorage.getItem('token');
+    }
+  ]);
+
   app.config(function($routeProvider) {
     $routeProvider
       .when('/', {

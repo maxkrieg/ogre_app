@@ -14,6 +14,16 @@
         controller: 'welcomeController',
         controllerAs: 'welcomeCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'loginController',
+        controllerAs: 'loginCtrl'
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'registerController',
+        controllerAs: 'registerCtrl'
+      })
       .when('/main', {
         templateUrl: 'views/main.html',
         controller: 'mainController',

@@ -2,7 +2,7 @@
 
 (function loginControllerIIFE() {
 
-  var LoginController = function(appSettings, loginFactory) {
+  var LoginController = function(appSettings, loginFactory, $location) {
     var vm = this;
     vm.appSettings = appSettings;
     vm.loginForm = {};
@@ -19,11 +19,13 @@
         .success(function(data, status) {
           localStorage.setItem('token', data.token);
           localStorage.getItem('token');
-          console.log("success");
+          console.log("success logging in as: " + data);
+          $location.path('/main');
         })
         .error(function(data, status, headers, config) {
           console.log("Error logging in");
           alert("Error logging in");
+
         });
     };
 
@@ -33,7 +35,7 @@
 
 
 
-  LoginController.$inject = ['appSettings', 'loginFactory'];
+  LoginController.$inject = ['appSettings', 'loginFactory', '$location'];
 
   angular.module('ogreApp').controller('loginController', LoginController);
 

@@ -6,8 +6,13 @@
     var vm = this;
     vm.appSettings = appSettings;
     vm.registerForm = {};
+    vm.registerForm.first_name = "";
+    vm.registerForm.last_name = "";
     vm.registerForm.email = "";
     vm.registerForm.password = "";
+    vm.registerForm.city = "";
+    vm.registerForm.state = "";
+    vm.registerForm.zip = "";
 
 
     this.createUser = function() {
@@ -27,9 +32,7 @@
 
 
 
-  }; /* close for LoginController */
-
-
+  }; /* close for RegisterController */
 
   RegisterController.$inject = ['appSettings', 'registerFactory'];
 

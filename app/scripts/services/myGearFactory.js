@@ -16,8 +16,12 @@
       });
     };
 
-    factory.getProduct = function(productId) {
-      return $http.get(this.appSettings.railsURI + '/myproducts/' + productId);
+    factory.getMyGearItem = function(gearId) {
+      return $http.get(this.appSettings.railsURI + '/myproducts/' + gearId, {
+        headers: {
+          Authorization: 'Token token=' + localStorage.getItem('token')
+        }
+      });
     };
     return factory;
   };

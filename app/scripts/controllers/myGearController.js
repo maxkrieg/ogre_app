@@ -11,6 +11,7 @@
       myGearFactory.getMyGear()
         .success(function(data) {
           console.log('success getting my gear');
+          console.log(data);
           vm.myGear = data;
         })
         .error(function(data, status, headers, config) {

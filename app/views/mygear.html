@@ -5,13 +5,15 @@
       <h2>My Gear</h2>
       <a id="" class="btn waves-effect waves-light orange" ng-click="">Add New Gear</a>
       <ul class="collection">
-        <li class="collection-item avatar" ng-repeat="gear in myGearCtrl.myGear">
-          <img src="{{gear.image_src}}" alt="" class="circle">
-          <span class="title" id="{{gear.id}}">{{gear.title}}</span>
-          <p>{{gear.description}} <br>
-            {{gear.daily_cost | currency}} / day
-          </p>
-        </li>
+        <a ng-repeat="gear in myGearCtrl.myGear" href="#/mygearrentals/{{gear.id}}">
+          <li class="collection-item avatar">
+            <img src="{{gear.image_src}}" alt="" class="circle">
+            <span class="title" id="{{gear.id}}">{{gear.title}}</span>
+            <p>{{gear.description}} <br>
+              {{gear.daily_cost | currency}} / day
+            </p>
+          </li>
+        </a>
       </ul>
       <div>
         {{myGearCtrl.myGear}}

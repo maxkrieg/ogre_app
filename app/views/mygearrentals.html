@@ -1,0 +1,24 @@
+<header ng-include="src='views/navbar-user.html'"></header>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m10 offset-m1">
+      <h1>My Gear Rentals Page<h1>
+      <h2>{{myGearRentalsCtrl.myGearRentals.title}}</h2>
+      <ul class="collection">
+        <a ng-repeat="rental in myGearRentalsCtrl.myGearRentals">
+          <li class="collection-item avatar">
+            <span class="title" id="{{rental.id}}">{{ rental.renter_name }}</span>
+            <p>{{ rental.start_date | date }} - {{ rental.end_date | date }}<br>
+              {{ rental.total_cost | currency }} / day
+            </p>
+          </li>
+        </a>
+      </ul>
+      <div>
+        {{myGearCtrl.myGear}}
+      </div>
+    </div>
+  </div>
+
+
+</div>

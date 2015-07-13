@@ -19,13 +19,12 @@
         .success(function(data, status) {
           localStorage.setItem('token', data.token);
           localStorage.getItem('token');
-          console.log("success logging in as: " + data);
+          console.log("success logging in");
           $location.path('/main');
         })
         .error(function(data, status, headers, config) {
           console.log("Error logging in");
-          alert("Error logging in");
-
+          alert("error logging in");
         });
     };
 

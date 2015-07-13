@@ -28,7 +28,7 @@
       .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'registerController',
-        controllerAs: 'registerCtrl'
+        controllerAs: 'regCtrl'
       })
       .when('/main', {
         templateUrl: 'views/main.html',

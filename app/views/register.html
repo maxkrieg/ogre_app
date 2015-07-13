@@ -3,17 +3,80 @@
   <div class="row">
     <div class="col s12">
       <h2>Register</h2>
+      <form name="regFormNg">
+        <!-- First and Last Names -->
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="first_name" type="text" name="first_name" class="validate" ng-model="regCtrl.regForm.first_name">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" name="last_name" class="validate" ng-model="regCtrl.regForm.last_name">
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <!-- City, State, Zip -->
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="first_name" type="text" class="validate" ng-model="regCtrl.regForm.city" >
+            <label for="first_name">City</label>
+          </div>
+          <div class="input-field col s4">
+            <select class="browser-default" material-select ng-model="regCtrl.regForm.state" >
+                <option value="" disabled selected>State</option>
+                <option ng-repeat="state in regCtrl.stateOptions">{{state}}</option>
+            </select>
+          </div>
+          <div class="input-field col s4">
+            <input id="zip" type="text" name="zip" class="validate" ng-model="regCtrl.regForm.zip" ng-minlength="5" ng-maxlength="5" ng-pattern="/^\d{1,6}$/">
+            <label for="zip">Zip Code</label>
+            <div ng-show="regFormNg.zip.$invalid">
+              You must enter a valid zip code.
+            </div>
+          </div>
+        </div>
+        <!-- Email -->
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="email" type="email" name="email" class="validate" ng-maxlength="20" ng-model="regCtrl.regForm.email">
+            <label for="email">Email</label>
+            <div ng-show="regFormNg.email.$invalid">
+              You must enter a valid email address.
+            </div>
+          </div>
+        </div>
+        <!-- Password -->
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="password" type="password" class="validate" ng-model="regCtrl.regForm.password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <!-- Confirm Password -->
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="confirmPassword" type="password" name = "confirmPassword" class="validate" ng-model="regCtrl.confirmPassword" required>
+            <label for="confirmPassword">Please enter your password again</label>
+          </div>
+        </div>
+        <!--  Password Match Message-->
+        <div ng-show="regCtrl.passwordVerify">
+          Passwords must match
+        </div>
+      </form>
       <div class="row">
-        <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
-        </div>
+        <a id="" class="btn-large waves-effect waves-light orange" ng-click="regCtrl.createUser()">Submit</a>
       </div>
+
+      <div>
+        <p>regCtrl.regForm Object:</p>
+        {{regCtrl.regForm}}
+        {{regCtrl.confirmPassword}}
+      </div>
+
+
     </div>
   </div>
+
 
 </div>

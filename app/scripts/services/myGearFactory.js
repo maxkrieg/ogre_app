@@ -2,20 +2,20 @@
 
 (function myGearFactoryIIFE() {
 
-  // Create a customers factory
+
   var myGearFactory = function($http, appSettings) {
     var factory = {};
     factory.appSettings = appSettings;
 
+    // Get all Gear
     factory.getMyGear = function() {
-      // allow access to the list of customers
       return $http.get(this.appSettings.railsURI + '/myproducts', {
         headers: {
           Authorization: 'Token token=' + localStorage.getItem('token')
         }
       });
     };
-
+    // Get one gear item
     factory.getMyGearItem = function(gearId) {
       return $http.get(this.appSettings.railsURI + '/myproducts/' + gearId, {
         headers: {
@@ -23,6 +23,7 @@
         }
       });
     };
+
     return factory;
   };
 

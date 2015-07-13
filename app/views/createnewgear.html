@@ -1,0 +1,89 @@
+<header ng-include="src='views/navbar-user.html'"></header>
+<!-- page container -->
+<div class="container">
+  <div class="row">
+    <div class="col s12 m10 offset-m1">
+      <h2>Create New Gear</h2>
+      <form name="newGearFormNg">
+
+        <div class="row">
+          <!-- Title -->
+          <div class="input-field col s6">
+            <input id="title" type="text" name="title" class="validate" ng-model="createNewGearCtrl.newGearItem.title">
+            <label for="title">Title</label>
+          </div>
+          <!-- Daily Cost -->
+          <div class="input-field col s3">
+            <i class="material-icons prefix tiny">attach_money</i>
+            <input id="daily_cost" type="text" class="validate" ng-model="createNewGearCtrl.newGearItem.daily_cost" >
+            <label for="daily_cost">Daily Cost</label>
+          </div>
+          <!-- Category -->
+          <div class="input-field col s3">
+            <select class="browser-default" material-select ng-model="regCtrl.regForm.state" >
+                <option value="" disabled selected>Category</option>
+                <option ng-repeat="state in regCtrl.stateOptions">{{state}}</option>
+            </select>
+          </div>
+
+
+        </div>
+
+        <div class="row">
+          <!-- Description -->
+          <div class="input-field col s6">
+            <textarea id="description" name="description" class="materialize-textarea" ng-model="createNewGearCtrl.newGearItem.description"></textarea>
+            <label for="description">Description</label>
+          </div>
+          <!-- Image Upload -->
+          <div class="col s6">
+
+            <form action="#">
+              <div class="file-field input-field">
+
+                <div class="btn">
+                  <span>Upload Image</span>
+                  <input type="file" id="file">
+                </div>
+
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+      </form>
+
+      <div class="row">
+        <a id="" class="btn-large waves-effect waves-light orange" ng-click="createNewGearCtrl.createNewGear()">Submit</a>
+      </div>
+
+      <form action="#">
+        <div class="file-field input-field">
+
+          <div class="btn">
+            <span>Upload Image</span>
+            <input type="file" id="file">
+          </div>
+
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+
+        </div>
+      </form>
+
+      <!-- TO DELETE: OBJECT HELPER DISPLAY -->
+      <div>
+        {{createNewGearCtrl.newGearItem}}
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

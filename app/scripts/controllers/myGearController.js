@@ -5,19 +5,13 @@
   var MyGearController = function(myGearFactory, appSettings) {
     var vm = this;
     vm.appSettings = appSettings;
-    // vm.sortBy = "name";
-    // vm.reverse = false;
-    // All the gear
     vm.myGear = [];
 
-    vm.title = "This title is coming from the controller!";
-
-    // Init the gear from the myGearFactory
-    // Get all the customers from the backend
     function init() {
       myGearFactory.getMyGear()
-        .success(function(myGear) {
-          vm.myGear = myGear;
+        .success(function(data) {
+          console.log('success getting my gear');
+          vm.myGear = data;
         })
         .error(function(data, status, headers, config) {
           console.log("Error getting my gear from the remote api");
@@ -25,12 +19,6 @@
         });
     }
     init();
-
-
-    vm.doSort = function(propName) {
-      vm.sortBy = propName;
-      vm.reverse = !vm.reverse;
-    };
 
   };
 

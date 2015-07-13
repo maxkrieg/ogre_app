@@ -9,7 +9,6 @@
 
     factory.authenticateUser = function(data) {
       return $http.post(this.appSettings.railsURI + '/login', data, {
-        headers: undefined,
         processData: false
       });
     };

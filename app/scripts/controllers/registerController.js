@@ -17,7 +17,6 @@
 
 
     this.createUser = function() {
-      console.log(vm.regForm);
       registerFactory.createUser({
         user: vm.regForm
       })

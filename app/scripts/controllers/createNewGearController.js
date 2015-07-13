@@ -10,6 +10,7 @@
     vm.newGearItem.description = "";
     vm.newGearItem.daily_cost = "";
     vm.newGearItem.image = "";
+    vm.newGearItem.category = "default";
 
     this.createNewGear = function() {
       createNewGearFactory.createNewGear(vm.newGearItem)
@@ -21,6 +22,8 @@
           console.log("Error creating new gear item");
         });
     };
+
+    this.categoryOptions = createNewGearFactory.gearCategories;
 
   };
 

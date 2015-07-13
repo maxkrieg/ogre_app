@@ -15,14 +15,16 @@
           <!-- Daily Cost -->
           <div class="input-field col s3">
             <i class="material-icons prefix tiny">attach_money</i>
-            <input id="daily_cost" type="text" class="validate" ng-model="createNewGearCtrl.newGearItem.daily_cost" >
+            <input id="daily_cost" type="number" class="validate" name="daily_cost" ng-model="createNewGearCtrl.newGearItem.daily_cost" ng-pattern="">
             <label for="daily_cost">Daily Cost</label>
+            <div ng-show="newGearFormNg.daily_cost.$invalid">
+              You must enter a valid price.
+            </div>
           </div>
           <!-- Category -->
           <div class="input-field col s3">
-            <select class="browser-default" material-select ng-model="regCtrl.regForm.state" >
-                <option value="" disabled selected>Category</option>
-                <option ng-repeat="state in regCtrl.stateOptions">{{state}}</option>
+            <select class="browser-default" material-select ng-model="createNewGearCtrl.newGearItem.category" ng-options="obj.id as obj.name group by obj.type for obj in createNewGearCtrl.categoryOptions">
+                <option value="default" disabled selected>Select a Category</option>
             </select>
           </div>
 
@@ -40,16 +42,13 @@
 
             <form action="#">
               <div class="file-field input-field">
-
                 <div class="btn">
                   <span>Upload Image</span>
-                  <input type="file" id="file">
+                  <input type="file" id="file" ng-model="createNewGearCtrl.newGearItem.image">
                 </div>
-
                 <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text">
+                  <input class="file-path validate" type="text" class="show">
                 </div>
-
               </div>
             </form>
 
@@ -61,21 +60,6 @@
       <div class="row">
         <a id="" class="btn-large waves-effect waves-light orange" ng-click="createNewGearCtrl.createNewGear()">Submit</a>
       </div>
-
-      <form action="#">
-        <div class="file-field input-field">
-
-          <div class="btn">
-            <span>Upload Image</span>
-            <input type="file" id="file">
-          </div>
-
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
-          </div>
-
-        </div>
-      </form>
 
       <!-- TO DELETE: OBJECT HELPER DISPLAY -->
       <div>

@@ -1,22 +1,83 @@
 <header ng-include="src='views/navbar-user.html'"></header>
-<div class="container">
+
+<div class="container"> <!-- page container -->
+
+  <!-- product panel -->
   <div class="row">
     <div class="col s12 m10 offset-m1">
-      <h1>My Gear Rentals Page<h1>
-      <h2>{{myGearRentalsCtrl.myGearRentals.title}}</h2>
-      <ul class="collection">
-        <a ng-repeat="rental in myGearRentalsCtrl.myGearRentals">
-          <li class="collection-item avatar">
-            <span class="title" id="{{rental.id}}">{{ rental.renter_name }}</span>
-            <p>{{ rental.start_date | date }} - {{ rental.end_date | date }}<br>
-              {{ rental.total_cost | currency }} / day
-            </p>
-          </li>
-        </a>
-      </ul>
-      <div>
-        {{myGearCtrl.myGear}}
+      <div class="card-panel grey lighten-5 z-depth-1">
+        <div class="row valign-wrapper">
+
+          <!-- edit icon -->
+          <div class="col s2">
+            <div>
+              <i class="material-icons medium">mode_edit</i>
+            </div>
+          </div>
+
+          <!-- product image -->
+          <div class="col s4">
+            <img src="{{myGearRentalsCtrl.myGearRentals.image_src}}" alt="" class="circle responsive-img">
+          </div>
+
+          <!-- product title and description -->
+          <div class="col s6">
+            <span class="black-text">
+              <h3>{{myGearRentalsCtrl.myGearRentals.title}}</h3>
+              <h6>{{myGearRentalsCtrl.myGearRentals.description}}</h6>
+              <p>{{myGearRentalsCtrl.myGearRentals.daily_cost | currency }} / day</p>
+            </span>
+          </div>
+
+        </div>
       </div>
+    </div>
+  </div>
+
+
+  <!-- collection of products' rentals -->
+  <div class="row">
+    <div class="col s12 m10 offset-m1">
+      <h4>Rentals</h4>
+      <ul class="collection">
+
+        <!-- rental collection item repeat -->
+        <li class="collection-item" ng-repeat="rental in myGearRentalsCtrl.myGearRentals.rentals">
+          <div class="row">
+
+            <!-- rental information -->
+            <div class="col s8">
+              <strong><span class="title" id="{{rental.id}}">{{ rental.renter_name }}</span></strong>
+              <p>{{ rental.start_date | date }} - {{ rental.end_date | date }}<br>
+                {{ rental.total_cost | currency }}
+              </p>
+              <p>Status: {{rental.status}}</p>
+            </div>
+
+            <!-- rental status update -->
+            <div class="col s4">
+              <h6><strong>Update Rental Status</strong></h6>
+              <div class="input-field">
+                <select class="browser-default" material-select ng-model="rental.status">
+                    <option>{{rental.status}}</option>
+                    <option>{{myGearRentalsCtrl.otherStatusOption(rental.status)}}</option>
+                </select>
+              </div>
+              <a class="waves-effect waves-light btn btn-small" ng-href="">Save</a>
+            </div>
+
+          </div>
+        </li> <!-- /rental collection item repeat -->
+
+      </ul>
+
+      <!-- TO DELETE: HELPER OBJECT DISPLAY -->
+      <div>
+        myGearRentalsCtrl.myGearRentals:
+        <br>
+        {{myGearRentalsCtrl.myGearRentals}}
+      </div>
+
     </div>
   </div>
 

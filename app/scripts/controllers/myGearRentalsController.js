@@ -7,7 +7,7 @@
     var gearId = $routeParams.gear_id;
     var vm = this;
     vm.appSettings = appSettings;
-    vm.myGearRentals = [];
+    vm.myGearRentals = {};
 
     function init() {
       // Search for the gear by id
@@ -21,6 +21,14 @@
         });
     }
     init();
+
+    this.otherStatusOption = function(currentStatus) {
+      if (currentStatus === "pending") {
+        return "approved";
+      } else if (currentStatus === "approved") {
+        return "pending";
+      }
+    };
   };
 
   // Prevent the minifier from breaking dependency injection.

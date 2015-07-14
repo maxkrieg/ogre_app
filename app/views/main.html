@@ -8,12 +8,26 @@
   <div class="row">
     <div class="col s12 m10 offset-m1">
       <div class="input-field">
-        <input id="search" type="search" name="search" id="search" ng-minlength="1" ng-maxlength="20" class="validate">
+        <input id="search" type="search" name="search" id="search" ng-model="mainCtrl.searchQuery" ng-minlength="1" ng-maxlength="30" class="validate">
         <label for="search">This is where the expedition begins...</label>
       </div>
-      <a class="waves-effect waves-light btn" ng-href="#/">Search Gear</a>
-      <a class="waves-effect waves-light btn" ng-href="#/">Search Friends</a>
+      <a class="waves-effect waves-light btn" ng-click="mainCtrl.searchGear()">Search Gear</a>
+      <a class="waves-effect waves-light btn" ng-click="mainCtrl.searchFriends()">Search Friends</a>
     </div>
+
+
+  </div>
+
+  <!-- TO DELETE: HELPER STUFF -->
+  <div class="row">
+    User Zip Code: <br>
+    {{mainCtrl.userZip}} <br>
+    User Search: <br>
+    {{mainCtrl.searchQuery}}
+  </div>
+
+  <div class="row">
+    search results here
   </div>
 
 </div>

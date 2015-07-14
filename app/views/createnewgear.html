@@ -15,7 +15,7 @@
           <!-- Daily Cost -->
           <div class="input-field col s3">
             <i class="material-icons prefix tiny">attach_money</i>
-            <input id="daily_cost" type="number" class="validate" name="daily_cost" ng-model="createNewGearCtrl.newGearItem.daily_cost" ng-pattern="/^[1-9]\d*(?:\.\d{0,2})?$/">
+            <input id="daily_cost" type="text" name="daily_cost" ng-model="createNewGearCtrl.newGearItem.daily_cost" ng-pattern="/^[1-9]\d*(?:\.\d{0,2})?$/">
             <label for="daily_cost">Daily Cost</label>
             <div ng-show="newGearFormNg.daily_cost.$invalid">
               You must enter a valid price.

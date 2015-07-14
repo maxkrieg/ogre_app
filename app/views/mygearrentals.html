@@ -37,60 +37,62 @@
 
   <!-- Edit Item Form -->
   <div class="row" ng-show="showEditForm">
-    <div class="col s12 m10 offset-m1">
-      <h4>Edit Item</h4>
-      <form name="newGearFormNg">
-        <div class="row">
-          <!-- Title -->
-          <div class="input-field col s6">
-            <input id="title" type="text" name="title" class="validate" ng-model="myGearRentalsCtrl.myGearRentals.title">
-            <label for="title" class="active">Title</label>
-          </div>
-          <!-- Daily Cost -->
-          <div class="input-field col s3">
-            <i class="material-icons prefix tiny">attach_money</i>
-            <input id="daily_cost" type="text" name="daily_cost" ng-model="myGearRentalsCtrl.myGearRentals.daily_cost" ng-pattern="/^[1-9]\d*(?:\.\d{0,2})?$/">
-            <label for="daily_cost" class="active">Daily Cost</label>
-            <div ng-show="newGearFormNg.daily_cost.$invalid">
-              You must enter a valid price.
-            </div>
-          </div>
-          <!-- Category -->
-          <div class="input-field col s3">
-            <select class="browser-default" material-select ng-model="myGearRentalsCtrl.myGearRentals.category" ng-options="obj.id as obj.name group by obj.type for obj in myGearRentalsCtrl.categoryOptions">
-              <option value="default" disabled selected>Poop</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row">
-          <!-- Description -->
-          <div class="input-field col s6">
-            <textarea id="description" name="description" class="materialize-textarea" ng-model="myGearRentalsCtrl.myGearRentals.description"></textarea>
-            <label for="description" class="active">Description</label>
-          </div>
-          <!-- Image Upload -->
-          <div class="col s6">
-            <form action="#">
-              <div class="file-field input-field">
-                <div class="btn">
-                  <span>Upload Image</span>
-                  <input type="file" id="file" ng-model="createNewGearCtrl.newGearItem.image">
-                </div>
-                <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text" class="show">
+    <div class="card-panel grey lighten-5 z-depth-1">
+      <div class="row valign-wrapper">
+        <div class="col s12 m10 offset-m1">
+          <h4>Edit Item</h4>
+          <form name="newGearFormNg">
+            <div class="row">
+              <!-- Title -->
+              <div class="input-field col s6">
+                <input id="title" type="text" name="title" class="validate" ng-model="myGearRentalsCtrl.myGearRentals.title">
+                <label for="title" class="active">Title</label>
+              </div>
+              <!-- Daily Cost -->
+              <div class="input-field col s3">
+                <i class="material-icons prefix tiny">attach_money</i>
+                <input id="daily_cost" type="text" name="daily_cost" ng-model="myGearRentalsCtrl.myGearRentals.daily_cost" ng-pattern="/^[1-9]\d*(?:\.\d{0,2})?$/">
+                <label for="daily_cost" class="active">Daily Cost</label>
+                <div ng-show="newGearFormNg.daily_cost.$invalid">
+                  You must enter a valid price.
                 </div>
               </div>
-            </form>
+              <!-- Category -->
+              <div class="input-field col s3">
+                <select class="browser-default" material-select ng-model="myGearRentalsCtrl.myGearRentals.category" ng-options="obj.id as obj.name group by obj.type for obj in myGearRentalsCtrl.categoryOptions">
+                  <option value="default" disabled selected>Poop</option>
+                </select>
+              </div>
+            </div>
 
-          </div>
-
+            <div class="row">
+              <!-- Description -->
+              <div class="input-field col s6">
+                <textarea id="description" name="description" class="materialize-textarea" ng-model="myGearRentalsCtrl.myGearRentals.description"></textarea>
+                <label for="description" class="active">Description</label>
+              </div>
+              <!-- Image Upload -->
+              <div class="col s6">
+                <form action="#">
+                  <div class="file-field input-field">
+                    <div class="btn">
+                      <span>Upload Image</span>
+                      <input type="file" id="file" ng-model="createNewGearCtrl.newGearItem.image">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" class="show">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </form>
+          <a class="waves-effect waves-light btn btn-small" ng-click="showEditForm = !showEditForm; myGearRentalsCtrl.editMyGearItem()">Save Changes</a>
+          <a class="waves-effect waves-light btn btn-small red">Delete Item</a>
         </div>
-      </form>
-      <a class="waves-effect waves-light btn btn-small" ng-click="showEditForm = ! showEditForm">Save Changes</a>
+      </div>
     </div>
-  </div>
-  <!-- /Edit Item Form -->
+  </div> <!-- /Edit Item Form -->
 
 
   <!-- collection of products' rentals -->
@@ -105,14 +107,13 @@
 
             <!-- rental information -->
             <div class="col s8">
-              <strong><span class="title" id="{{rental.id}}">{{ rental.renter_name }}</span></strong>
-              <p>{{ rental.start_date | date }} - {{ rental.end_date | date }}<br>
-                {{ rental.total_cost | currency }}
+              <span class="title" id="{{rental.id}}"><strong>Renter:</strong> {{ rental.renter_name }}</span>
+              <p><strong>From:</strong> {{ rental.start_date | date }} <br><strong>To:</strong> {{ rental.end_date | date }}<br>
+                <strong>Total Cost:</strong> {{ rental.total_cost | currency }}
               </p>
-              <p>Status: {{rental.status}}</p>
-              <p>Message: {{rental.message}}</p>
+              <p><strong>Status:</strong> {{rental.status}}</p>
+              <p><strong>Message from Renter:</strong> {{rental.message}}</p>
             </div>
-
             <!-- rental status update -->
             <div class="col s4">
               <h6><strong>Update Rental Status</strong></h6>
@@ -122,7 +123,8 @@
                     <option>{{myGearRentalsCtrl.otherStatusOption(rental.status)}}</option>
                 </select>
               </div>
-              <a class="waves-effect waves-light btn btn-small" ng-href="">Save</a>
+              <a class="waves-effect waves-light btn btn-small" ng-click="myGearRentalsCtrl.editMyGearRental({status: rental.status}, rental.id)">Save</a>
+
             </div>
 
           </div>
@@ -135,6 +137,12 @@
         myGearRentalsCtrl.myGearRentals:
         <br>
         {{myGearRentalsCtrl.myGearRentals}}
+      </div>
+      <br>
+      <div>
+        myGearRentalsCtrl.myGearRentals.rentals:
+        <br>
+        {{myGearRentalsCtrl.myGearRentals.rentals}}
       </div>
 
     </div>

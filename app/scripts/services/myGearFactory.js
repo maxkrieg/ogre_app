@@ -2,7 +2,6 @@
 
 (function myGearFactoryIIFE() {
 
-
   var myGearFactory = function($http, appSettings) {
     var factory = {};
     factory.appSettings = appSettings;
@@ -18,6 +17,14 @@
     // Get one gear item
     factory.getMyGearItem = function(gearId) {
       return $http.get(this.appSettings.railsURI + '/myproducts/' + gearId, {
+        headers: {
+          Authorization: 'Token token=' + localStorage.getItem('token')
+        }
+      });
+    };
+    // Edit one gear item
+    factory.editMyGearItem = function(gearId, data) {
+      return $http.put(this.appSettings.railsURI + '/myproducts/' + gearId, data, {
         headers: {
           Authorization: 'Token token=' + localStorage.getItem('token')
         }

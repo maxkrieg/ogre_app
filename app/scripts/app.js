@@ -44,6 +44,11 @@
         controller: 'createNewGearController',
         controllerAs: 'createNewGearCtrl'
       })
+      .when('/myrentals', {
+        templateUrl: 'views/myrentals.html',
+        controller: 'myRentalsController',
+        controllerAs: 'myRentalsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

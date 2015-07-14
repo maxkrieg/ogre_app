@@ -1,0 +1,52 @@
+<header ng-include="src='views/navbar-user.html'"></header>
+<!-- page container -->
+<div class="container">
+  <div class="row">
+    <div class="col s12 m10 offset-m1">
+      <h2>My Rentals</h2>
+      <ul class="collection">
+        <!-- rental collection item repeat -->
+        <li class="collection-item" ng-repeat="rental in myRentalsCtrl.myRentals">
+          <div class="row">
+
+            <!-- rental information -->
+            <div class="col s8">
+              <span class="title" id="{{rental.id}}"><strong>Gear:</strong> {{ rental.product_title }}</span>
+              <p><strong>From:</strong> {{ rental.start_date | date }} <br><strong>To:</strong> {{ rental.end_date | date }}<br>
+                <strong>Total Cost:</strong> {{ rental.total_cost | currency }}
+              </p>
+              <p><strong>Status:</strong> {{rental.status}}</p>
+              <p><strong>Message from You:</strong> {{rental.message}}</p>
+            </div> <!-- /col -->
+
+            <!-- owner information for contact -->
+            <div class="col s4">
+
+              <!-- rental approved by owner -->
+              <div ng-show="myRentalsCtrl.rentalStatusApproved(rental.status)">
+                <h6><strong>{{rental.owner_name}} has approved this rental!</strong></h6>
+                <p>Get in touch with {{rental.owner_name}}:</p>
+                <p>{{rental.owner_email}}
+              </div>
+
+              <!-- rental still pending -->
+              <div ng-show="!myRentalsCtrl.rentalStatusApproved(rental.status)">
+                <h6><strong>{{rental.owner_name}} has not yet approved this rental.</strong></h6>
+                <p>Check back soon to see if it has been approved.</p>
+              </div>
+            </div><!-- /col -->
+
+          </div><!-- /row -->
+        </li> <!-- /rental collection item repeat -->
+      </ul> <!-- /collection -->
+
+      <!-- TO DELETE: OBJECT HELPER DISPLAU -->
+      <div>
+        {{myRentalsCtrl.myRentals}}
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

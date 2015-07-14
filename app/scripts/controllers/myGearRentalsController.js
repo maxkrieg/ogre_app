@@ -71,6 +71,8 @@
     // Pulling in category options from createNewGearFactory
     this.categoryOptions = createNewGearFactory.gearCategories;
 
+    this.toastDuration = 1000;
+    this.toastMessage = 'Changes Saved';
   };
 
   // Prevent the minifier from breaking dependency injection.

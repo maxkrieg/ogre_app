@@ -25,6 +25,8 @@
     init();
 
     this.searchGear = function() {
+      vm.gearResults = [];
+      vm.friendResults = [];
       searchFactory.searchGear(vm.searchQuery)
         .success(function(data) {
           console.log('success finding relevant gear');
@@ -36,6 +38,8 @@
     };
 
     this.searchFriends = function() {
+      vm.gearResults = [];
+      vm.friendResults = [];
       searchFactory.searchFriends(vm.userZip, vm.searchQuery)
         .success(function() {
           console.log('success finding relevant meetups');

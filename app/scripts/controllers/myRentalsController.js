@@ -21,7 +21,7 @@
     }
     init();
     this.rentalStatusApproved = function(status) {
-      return status == "approved";
+      return status === "approved";
     };
   };
 

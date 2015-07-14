@@ -2,7 +2,7 @@
 
 (function myGearRentalsControllerIIFE() {
 
-  var MyGearRentalsController = function($routeParams, myGearFactory, appSettings) {
+  var MyGearRentalsController = function($routeParams, myGearFactory, appSettings, createNewGearFactory) {
 
     var gearId = $routeParams.gear_id;
     var vm = this;
@@ -29,10 +29,12 @@
         return "pending";
       }
     };
+
+    this.categoryOptions = createNewGearFactory.gearCategories;
   };
 
   // Prevent the minifier from breaking dependency injection.
-  MyGearRentalsController.$inject = ['$routeParams', 'myGearFactory', 'appSettings'];
+  MyGearRentalsController.$inject = ['$routeParams', 'myGearFactory', 'appSettings', 'createNewGearFactory'];
 
   // The Controller is part of the module.
   angular.module('ogreApp').controller('myGearRentalsController', MyGearRentalsController);

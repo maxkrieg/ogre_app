@@ -30,8 +30,16 @@
         }
       });
     };
+    // Delete one gear item
+    factory.deleteMyGearItem = function(gearId) {
+      return $http.delete(this.appSettings.railsURI + '/myproducts/' + gearId, {
+        headers: {
+          Authorization: 'Token token=' + localStorage.getItem('token')
+        }
+      });
+    };
 
-    return factory;
+    return factory; /* Make this factory accessible */
   };
 
   myGearFactory.$inject = ['$http', 'appSettings'];

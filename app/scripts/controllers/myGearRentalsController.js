@@ -10,7 +10,7 @@
     vm.appSettings = appSettings;
     vm.myGearRentals = {};
 
-    // Getting the gear item to display when router is hit
+    // GET request when hitting this route, gets gear item for view
     function init() {
       // Search for the gear by id
       myGearFactory.getMyGearItem(gearId)
@@ -46,9 +46,19 @@
         });
     };
 
+    // DELETE request to delete a gear item
+    this.deleteMyGearItem = function() {
+      myGearFactory.deleteMyGearItem(gearId)
+        .success(function() {
+          console.log('success deleting gear item');
+          $location.path('/mygear');
+        })
+        .error(function() {
+          console.log('error deleting gear item');
+        });
+    };
+    // PUT request to edit status of one of rentals for gear item
     this.editMyGearRental = function(rentalData, rentalId) {
-      console.log('rental data: ' + rentalData);
-      console.log('rental id: ' + rentalId);
       myGearRentalFactory.editMyGearRental(gearId, rentalId, rentalData)
         .success(function() {
           console.log('success updating rental on my product');
@@ -58,7 +68,7 @@
         });
     };
 
-    // Pulling in the sport category options from the createNewGearFactory
+    // Pulling in category options from createNewGearFactory
     this.categoryOptions = createNewGearFactory.gearCategories;
 
   };

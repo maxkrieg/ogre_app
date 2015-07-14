@@ -9,11 +9,13 @@
     vm.newGearItem.title = "";
     vm.newGearItem.description = "";
     vm.newGearItem.daily_cost = "";
-    vm.newGearItem.image = "";
+    vm.newGearItem.image = "image";
     vm.newGearItem.category = "default";
 
     this.createNewGear = function() {
-      createNewGearFactory.createNewGear(vm.newGearItem)
+      createNewGearFactory.createNewGear({
+        product: vm.newGearItem
+      })
         .success(function(data) {
           console.log('success adding new gear');
           console.log(data);

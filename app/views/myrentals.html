@@ -11,7 +11,7 @@
 
             <!-- rental information -->
             <div class="col s8">
-              <span class="title" id="{{rental.id}}"><strong>Gear:</strong> {{ rental.product_title }}</span>
+              <span class="title" id="{{rental.id}}"><strong>Gear:</strong> {{ rental.product_name }}</span>
               <p><strong>From:</strong> {{ rental.start_date | date }} <br><strong>To:</strong> {{ rental.end_date | date }}<br>
                 <strong>Total Cost:</strong> {{ rental.total_cost | currency }}
               </p>
@@ -25,8 +25,8 @@
               <!-- rental approved by owner -->
               <div ng-show="myRentalsCtrl.rentalStatusApproved(rental.status)">
                 <h6><strong>{{rental.owner_name}} has approved this rental!</strong></h6>
-                <p>Get in touch with {{rental.owner_name}}:</p>
-                <p>{{rental.owner_email}}
+                <p>Click below to send {{rental.owner_name}} an email to coordinate pick-up:</p>
+                <a href="mailto:{{rental.owner_email}}?subject={{rental.product_name}}&body=Hi {{rental.owner_name}}, Thanks for approving my rental! When would be best for us to meet? -{{rental.renter_name}}"><i class="material-icons small">email</i></a>
               </div>
 
               <!-- rental still pending -->

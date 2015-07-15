@@ -1,0 +1,101 @@
+<header ng-include="src='views/navbar-user.html'"></header>
+
+<div class="container"> <!-- page container -->
+
+  <!-- product panel -->
+  <div class="row">
+    <div class="col s12 m10 offset-m1">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{viewGearCtrl.gearItem.image_src}}">
+          <span class="card-title">{{viewGearCtrl.gearItem.title}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{viewGearCtrl.gearItem.description}}</p>
+          <p>Daily Cost: {{viewGearCtrl.gearItem.daily_cost | currency}}/day</p>
+          <p>Owner: {{viewGearCtrl.gearItem.owner_name}}</p>
+        </div>
+        <div class="card-action">
+          <a href="" ng-click="showRentalForm = !showRentalForm">Rent This Gear</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rental Request Form -->
+  <div class="row" ng-show="showRentalForm">
+    <div class="card-panel grey lighten-5 z-depth-1">
+      <div class="row valign-wrapper">
+        <div class="col s12 m10 offset-m1">
+          <h4>Rental Form</h4>
+          <form name="newGearFormNg">
+            <!-- Rental Form Row 1 -->
+            <div class="row">
+              <!-- Start Date -->
+              <div class="input-field col s4">
+                <input id="start_date" type="date" name="start_date" class="validate" ng-model="viewGearCtrl.newRental.start_date">
+                <label for="start_date" class="active">Start Date</label>
+              </div>
+              <!-- End Date -->
+              <div class="input-field col s4">
+                <input id="end_date" type="date" name="end_date" class="validate" ng-model="viewGearCtrl.newRental.end_date">
+                <label for="end_date" class="active">End Date</label>
+              </div>
+              <!-- Total Cost -->
+              <div class="input-field col s4">
+                <i class="material-icons prefix tiny">attach_money</i>
+                <input id="total_cost" type="text" name="total_cost" ng-model="viewGearCtrl.newRental.total_cost" ng-pattern="/^[1-9]\d*(?:\.\d{0,2})?$/">
+                <label for="total_cost" class="active">Total Cost</label>
+                <div ng-show="newGearFormNg.total_cost.$invalid">
+                  You must enter a valid price.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Message -->
+              <div class="input-field col s12">
+                <textarea id="message" name="message" class="materialize-textarea" ng-model="viewGearCtrl.newRental.message"></textarea>
+                <label for="message" class="active">Send {{viewGearCtrl.gearItem.owner_name}} a Message:</label>
+              </div>
+            </div>
+
+          </form>
+          <a class="waves-effect waves-light btn btn-small" ng-click="viewGearCtrl.createRental()">Submit</a>
+          <a class="waves-effect waves-light btn btn-small red" ng-click="showRentalForm = !showRentalForm">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /Edit Item Form -->
+
+
+  <!-- collection of products' rentals -->
+  <div class="row">
+    <div class="col s12 m10 offset-m1">
+      <h4>Current Rentals on this Product</h4>
+      <ul class="collection">
+        <!-- rental collection item repeat -->
+        <li class="collection-item" ng-repeat="rental in viewGearCtrl.gearItem.rentals">
+          <strong>From:</strong> {{ rental.start_date | date }} <br>
+          <strong>To:</strong> {{ rental.end_date | date }}
+        </li> <!-- /rental collection item repeat -->
+      </ul>
+
+      <!-- TO DELETE: HELPER OBJECT DISPLAY -->
+      <div>
+        viewGearCtrl.gearItem:
+        <br>
+        {{viewGearCtrl.gearItem}}
+      </div>
+      <br>
+      <div>
+        viewGearCtrl.gearItem.rentals:
+        <br>
+        {{viewGearCtrl.gearItem.rentals}}
+      </div>
+
+    </div> <!-- /column in product rentals row -->
+  </div> <!-- /product rentals row -->
+
+
+</div> <!--/page container -->

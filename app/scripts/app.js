@@ -29,6 +29,11 @@
         controller: 'mainController',
         controllerAs: 'mainCtrl'
       })
+      .when('/viewgear/:gear_id', {
+        templateUrl: 'views/viewgear.html',
+        controller: 'viewGearController',
+        controllerAs: 'viewGearCtrl'
+      })
       .when('/mygear', {
         templateUrl: 'views/mygear.html',
         controller: 'myGearController',

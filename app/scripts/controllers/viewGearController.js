@@ -8,8 +8,10 @@
     var gearId = $routeParams.gear_id;
     var vm = this;
     vm.appSettings = appSettings;
+
     vm.newRental = {};
     vm.gearItem = {};
+
 
     // GET request when hitting this route, gets gear item for view
     function init() {
@@ -25,12 +27,26 @@
     }
     init();
 
+    vm.totalCost = function(startDate, endDate) {
+      var start = Date.parse(startDate);
+      var end = Date.parse(endDate);
+      var numDays = Math.floor(end - start) / 86400000;
+      var cost = numDays * vm.gearItem.daily_cost;
+      vm.newRental.total_cost = cost;
+      return cost;
+    };
 
-    // Calculate total cost
-    vm.newRental.total_cost = "10";
-    vm.newRental.start_date = new Date();
-    this.numberOfDays = function() {
-      return vm.newRental.end_date - vm.newRental.start_date;
+
+
+    // Math.floor(( Date.parse(str2) - Date.parse(str1) ) / 86400000);
+    var startDateParsed = function() {
+      // return Date.parse(vm.newRental.start_date);
+      return new Date(vm.newRental.start_date).toLocaleDateString();
+    };
+
+    var endDateParsed = function() {
+      // return Date.parse(vm.newRental.start_date);
+      return new Date(vm.newRental.end_date).toLocaleDateString();
     };
 
   };

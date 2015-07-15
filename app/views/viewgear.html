@@ -43,8 +43,7 @@
               </div>
               <!-- Total Cost -->
               <div class="input-field col s4">
-                <i class="material-icons prefix tiny">attach_money</i>
-                <input id="total_cost" type="text" name="total_cost" ng-model="viewGearCtrl.newRental.total_cost" ng-pattern="/^[1-9]\d*(?:\.\d{0,2})?$/">
+                <p>{{viewGearCtrl.totalCost(viewGearCtrl.newRental.start_date, viewGearCtrl.newRental.end_date) | currency }}</p>
                 <label for="total_cost" class="active">Total Cost</label>
                 <div ng-show="newGearFormNg.total_cost.$invalid">
                   You must enter a valid price.
@@ -71,10 +70,13 @@
   <!-- TO DELETE: HELPER OBJECT DISPLAY -->
   <div>
     number of days: <br>
-    {{viewGearCtrl.numberOfDays}} <br>
-    viewGearCtrl.gearItem:
+    {{viewGearCtrl.numberOfDays()}} <br>
+    viewGearCtrl.newRental:
     <br>
     {{viewGearCtrl.newRental}}
+    <br>
+    Start Date Parse <br>
+    {{viewGearCtrl.startDateParsed()}}
   </div>
 
   <!-- collection of products' rentals -->

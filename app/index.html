@@ -8,10 +8,11 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/materialize/bin/materialize.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+   <!--  <link type="text/css" rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
@@ -19,22 +20,6 @@
   </head>
   <body ng-app="ogreApp">
 
-    <!-- <header>
-      <div class="navbar-fixed">
-        <nav>
-          <div class="nav-wrapper orange">
-            <a href="/#/main" class="brand-logo left">Ogre Buddies</a>
-
-            <ul class="right hide-on-small-and-down">
-              <li><a href="#/mygear">My Gear</a></li>
-              <li><a href="">My Rentals</a></li>
-              <li><a href="#/main">Search</a></li>
-            </ul>
-
-          </div>
-        </nav>
-      </div>
-    </header> -->
     <main>
       <div ng-view></div>
     </main>
@@ -49,6 +34,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -57,11 +43,12 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/materialize/bin/materialize.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="../bower_components/materialize/dist/js/materialize.min.js"></script>
+<!--     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../bower_components/materialize/dist/js/materialize.min.js"></script> -->
     <script type="text/javascript" src="../bower_components/angular-materialize/src/angular-materialize.js"></script>
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->

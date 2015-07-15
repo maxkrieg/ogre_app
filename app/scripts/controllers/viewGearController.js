@@ -2,7 +2,7 @@
 
 (function viewGearControllerIIFE() {
 
-  var ViewGearController = function($routeParams, allGearFactory, appSettings, $location) {
+  var ViewGearController = function($routeParams, allGearFactory, appSettings, $location, myRentalsFactory) {
 
     // Getting gear id from route
     var gearId = $routeParams.gear_id;
@@ -10,6 +10,7 @@
     vm.appSettings = appSettings;
 
     vm.newRental = {};
+    vm.newRental.status = "pending";
     vm.gearItem = {};
 
 
@@ -32,27 +33,26 @@
       var end = Date.parse(endDate);
       var numDays = Math.floor(end - start) / 86400000;
       var cost = numDays * vm.gearItem.daily_cost;
-      vm.newRental.total_cost = cost;
+      vm.newRental.total_cost = cost.toString();
       return cost;
     };
 
-
-
-    // Math.floor(( Date.parse(str2) - Date.parse(str1) ) / 86400000);
-    var startDateParsed = function() {
-      // return Date.parse(vm.newRental.start_date);
-      return new Date(vm.newRental.start_date).toLocaleDateString();
-    };
-
-    var endDateParsed = function() {
-      // return Date.parse(vm.newRental.start_date);
-      return new Date(vm.newRental.end_date).toLocaleDateString();
+    this.createRental = function() {
+      myRentalsFactory.createRental(gearId, {
+        rental: vm.newRental
+      })
+        .success(function(data) {
+          console.log('success adding new gear');
+        })
+        .error(function(data, status, headers, config) {
+          console.log("Error creating new gear item");
+        });
     };
 
   };
 
   // Prevent the minifier from breaking dependency injection.
-  ViewGearController.$inject = ['$routeParams', 'allGearFactory', 'appSettings', 'createNewGearFactory', '$location'];
+  ViewGearController.$inject = ['$routeParams', 'allGearFactory', 'appSettings', '$location', 'myRentalsFactory'];
 
   // The Controller is part of the module.
   angular.module('ogreApp').controller('viewGearController', ViewGearController);

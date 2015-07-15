@@ -30,9 +30,18 @@
         }
       });
     };
-    // Delete one gear item
+    // Delete one rental
     factory.deleteMyRental = function(rentalId) {
       return $http.delete(this.appSettings.railsURI + '/myrentals/' + rentalId, {
+        headers: {
+          Authorization: 'Token token=' + localStorage.getItem('token')
+        }
+      });
+    };
+
+    // Create one rental
+    factory.createRental = function(gearId, data) {
+      return $http.post(this.appSettings.railsURI + '/allproducts/' + gearId + '/allproductrentals', data, {
         headers: {
           Authorization: 'Token token=' + localStorage.getItem('token')
         }

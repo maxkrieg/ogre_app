@@ -4,7 +4,7 @@
 
   <!-- product panel -->
   <div class="row">
-    <div class="col s12 m10 offset-m1">
+    <div class="col s12 m8 offset-m2">
       <div class="card">
         <div class="card-image">
           <img src="{{viewGearCtrl.gearItem.image_src}}">
@@ -33,7 +33,7 @@
             <div class="row">
               <!-- Start Date -->
               <div class="input-field col s4">
-                <input id="start_date" type="date" name="start_date" class="validate" ng-model="viewGearCtrl.newRental.start_date">
+                <input id="start_date" type="date" name="start_date" class="validate datepicker" ng-model="viewGearCtrl.newRental.start_date">
                 <label for="start_date" class="active">Start Date</label>
               </div>
               <!-- End Date -->
@@ -68,6 +68,14 @@
     </div>
   </div> <!-- /Edit Item Form -->
 
+  <!-- TO DELETE: HELPER OBJECT DISPLAY -->
+  <div>
+    number of days: <br>
+    {{viewGearCtrl.numberOfDays}} <br>
+    viewGearCtrl.gearItem:
+    <br>
+    {{viewGearCtrl.newRental}}
+  </div>
 
   <!-- collection of products' rentals -->
   <div class="row">
@@ -76,23 +84,13 @@
       <ul class="collection">
         <!-- rental collection item repeat -->
         <li class="collection-item" ng-repeat="rental in viewGearCtrl.gearItem.rentals">
+          <p>Renter: {{ rental.renter_first_name }}</p>
           <strong>From:</strong> {{ rental.start_date | date }} <br>
           <strong>To:</strong> {{ rental.end_date | date }}
         </li> <!-- /rental collection item repeat -->
       </ul>
 
-      <!-- TO DELETE: HELPER OBJECT DISPLAY -->
-      <div>
-        viewGearCtrl.gearItem:
-        <br>
-        {{viewGearCtrl.gearItem}}
-      </div>
-      <br>
-      <div>
-        viewGearCtrl.gearItem.rentals:
-        <br>
-        {{viewGearCtrl.gearItem.rentals}}
-      </div>
+
 
     </div> <!-- /column in product rentals row -->
   </div> <!-- /product rentals row -->

@@ -3,18 +3,25 @@
 (function createNewGearFactoryIIFE() {
 
 
-  var createNewGearFactory = function($http, appSettings) {
+  var createNewGearFactory = function($http, appSettings, Upload) {
     var factory = {};
     factory.appSettings = appSettings;
 
-
-
-    // Create new gear item
-    factory.createNewGear = function(data) {
-      return $http.post(this.appSettings.railsURI + '/myproducts', data, {
+    factory.createNewGear = function(file, data) {
+      return Upload.upload({
+        url: this.appSettings.railsURI + '/myproducts',
         headers: {
           Authorization: 'Token token=' + localStorage.getItem('token')
-        }
+        },
+        method: 'POST',
+        fields: {
+          'product[title]': data.title,
+          'product[description]': data.description,
+          'product[daily_cost]': data.daily_cost,
+          'product[category]': data.category
+        },
+        file: file,
+        fileFormDataName: 'product[image]'
       });
     };
 
@@ -103,7 +110,7 @@
     return factory;
   };
 
-  createNewGearFactory.$inject = ['$http', 'appSettings'];
+  createNewGearFactory.$inject = ['$http', 'appSettings', 'Upload'];
 
   angular.module('ogreApp').factory('createNewGearFactory', createNewGearFactory);
 })();

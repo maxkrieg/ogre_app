@@ -11,8 +11,8 @@
         <input id="search" type="search" name="search" id="search" ng-model="mainCtrl.searchQuery" ng-minlength="1" ng-maxlength="30" class="validate">
         <label for="search">This is where the expedition begins...</label>
       </div>
-      <a class="waves-effect waves-light btn" ng-click="mainCtrl.searchGear()">Search Gear</a>
-      <a class="waves-effect waves-light btn" ng-click="mainCtrl.searchFriends()">Search Friends</a>
+      <a class="waves-effect waves-light btn-large orange darken-1" ng-click="mainCtrl.searchGear()">Search Gear</a>
+      <a class="waves-effect waves-light btn-large orange darken-1" ng-click="mainCtrl.searchFriends()">Search Friends</a>
     </div>
   </div>
 
@@ -44,8 +44,7 @@
         </div>
         <div class="card-content">
           <p><strong>{{group.name}}</strong><br>
-          {{group.city}}, {{group.state}} | {{group.members}} members<br>
-          <strong>Next Event:</strong> {{group.next_event.name}}</p>
+          {{group.city}}, {{group.state}} | {{group.members}} members
         </div>
         <div class="card-action">
           <a href="{{group.link}}" target="_blank">View Group</a>

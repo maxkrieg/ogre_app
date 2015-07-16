@@ -2,34 +2,33 @@
 
 (function createNewGearControllerIIFE() {
 
-  var CreateNewGearController = function(createNewGearFactory, appSettings) {
+  var CreateNewGearController = function(createNewGearFactory, appSettings, $location, Upload) {
+
     var vm = this;
     vm.appSettings = appSettings;
     vm.newGearItem = {};
     vm.newGearItem.title = "";
     vm.newGearItem.description = "";
     vm.newGearItem.daily_cost = "";
-    vm.newGearItem.image = "image";
     vm.newGearItem.category = "default";
+    vm.newGearItem.image = "";
 
     this.createNewGear = function() {
-      createNewGearFactory.createNewGear({
-        product: vm.newGearItem
-      })
-        .success(function(data) {
-          console.log('success adding new gear');
-          console.log(data);
+      var file = vm.newGearItem.image;
+      createNewGearFactory.createNewGear(file, vm.newGearItem)
+        .success(function() {
+          console.log('successfully create new gear item!');
+          $location.path('/mygear');
         })
         .error(function(data, status, headers, config) {
-          console.log("Error creating new gear item");
+          console.log("error creating new gear item: " + status);
         });
     };
 
     this.categoryOptions = createNewGearFactory.gearCategories;
-
   };
 
-  CreateNewGearController.$inject = ['createNewGearFactory', 'appSettings'];
+  CreateNewGearController.$inject = ['createNewGearFactory', 'appSettings', '$location', 'Upload'];
 
   // The Controller is part of the module.
   angular.module('ogreApp').controller('createNewGearController', CreateNewGearController);

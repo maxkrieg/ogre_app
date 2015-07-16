@@ -24,6 +24,7 @@
     }
     init();
 
+    // Search Gear
     this.searchGear = function() {
       vm.gearResults = [];
       vm.friendResults = [];
@@ -37,13 +38,14 @@
         });
     };
 
+    // Search Friends
     this.searchFriends = function() {
       vm.gearResults = [];
       vm.friendResults = [];
       searchFactory.searchFriends(vm.userZip, vm.searchQuery)
-        .success(function() {
+        .success(function(data) {
           console.log('success finding relevant meetups');
-          vm.friendResults = [];
+          vm.friendResults = data;
         })
         .error(function() {
           console.log('error finding relevant meetups');

@@ -16,9 +16,9 @@
     </div>
   </div>
 
-
-  <!-- Gear Results -->
+  <!-- Results Row -->
   <div class="row">
+    <!-- Gear Results -->
     <div class="col s12 m6" ng-repeat="gear in mainCtrl.gearResults">
       <div class="card">
         <div class="card-image">
@@ -34,7 +34,26 @@
         </div>
       </div>
     </div>
-  </div>
 
-</div>
+    <!-- Friend Results -->
+    <div class="col s12 m6" ng-repeat="group in mainCtrl.friendResults">
+      <div class="card large">
+        <div class="card-image">
+          <img src="{{group.group_photo.photo_link}}">
+          <span class="card-title">{{group.name}}</span>
+        </div>
+        <div class="card-content">
+          <p><strong>{{group.name}}</strong><br>
+          {{group.city}}, {{group.state}} | {{group.members}} members<br>
+          <strong>Next Event:</strong> {{group.next_event.name}}</p>
+        </div>
+        <div class="card-action">
+          <a href="{{group.link}}" target="_blank">View Group</a>
+        </div>
+      </div>
+    </div>
+
+  </div> <!--/Results Row -->
+
+</div> <!--/container -->
 

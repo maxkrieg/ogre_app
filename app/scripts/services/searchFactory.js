@@ -26,11 +26,7 @@
 
     // Search Meetup
     factory.searchFriends = function(userZip, searchParams) {
-      return $http.get(this.appSettings.meetupURI + '&zip=' + userZip + '&text=' + searchParams, {
-        headers: {
-          Authorization: 'Token token=' + localStorage.getItem('token')
-        }
-      });
+      return $http.get(this.appSettings.railsURI + '/searchmeetup/?radius=25&page=25&zip=' + userZip + '&text=' + searchParams);
     };
 
     return factory; /* Make this factory accessible */

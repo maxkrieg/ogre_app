@@ -16,14 +16,14 @@
           <p>Owner: {{viewGearCtrl.gearItem.owner_name}}</p>
         </div>
         <div class="card-action">
-          <a href="" ng-click="showRentalForm = !showRentalForm">Rent This Gear</a>
+          <a ng-click="showRentalForm = !showRentalForm">Rent This Gear</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Rental Request Form -->
-  <div class="row" ng-show="showRentalForm">
+  <div class="row" ng-show="showRentalForm" id="rental-form">
     <div class="card-panel grey lighten-5 z-depth-1">
       <div class="row valign-wrapper">
         <div class="col s12 m10 offset-m1">
@@ -87,9 +87,6 @@
           <strong>To:</strong> {{ rental.end_date | date }}
         </li> <!-- /rental collection item repeat -->
       </ul>
-
-
-
     </div> <!-- /column in product rentals row -->
   </div> <!-- /product rentals row -->
 

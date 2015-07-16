@@ -2,10 +2,13 @@
 
 (function myRentalsControllerIIFE() {
 
-  var MyRentalsController = function(myRentalsFactory, appSettings) {
+  var MyRentalsController = function(myRentalsFactory, appSettings, $location) {
     var vm = this;
     vm.appSettings = appSettings;
     vm.myRentals = [];
+    vm.showDeleteToast = function() {
+      Materialize.toast('Rental Deleted', 2000);
+    };
 
     function init() {
       myRentalsFactory.getMyRentals()
@@ -23,9 +26,21 @@
     this.rentalStatusApproved = function(status) {
       return status === "approved";
     };
+
+    // DELETE rental
+    this.deleteMyRental = function(rentalId) {
+      myRentalsFactory.deleteMyRental(rentalId)
+        .success(function() {
+          console.log('success deleting rental');
+          $location.path('/myrentals');
+        })
+        .error(function() {
+          console.log('error deleting gear item');
+        });
+    };
   };
 
-  MyRentalsController.$inject = ['myRentalsFactory', 'appSettings'];
+  MyRentalsController.$inject = ['myRentalsFactory', 'appSettings', '$location'];
 
   // The Controller is part of the module.
   angular.module('ogreApp').controller('myRentalsController', MyRentalsController);

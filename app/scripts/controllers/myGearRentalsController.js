@@ -8,8 +8,15 @@
     var gearId = $routeParams.gear_id;
     var vm = this;
     vm.appSettings = appSettings;
-    vm.myGearRentals = {};
-    vm.showSavedMessage = false;
+    vm.myGearItem = {};
+    // vm.showSavedMessage = false;
+    vm.showStatusToast = function() {
+      Materialize.toast('Status Updated!', 2000);
+    };
+
+    vm.showEditGearToast = function() {
+      Materialize.toast('Gear Updated!', 2000);
+    };
 
 
     // GET request when hitting this route, gets gear item for view
@@ -17,7 +24,7 @@
       // Search for the gear by id
       myGearFactory.getMyGearItem(gearId)
         .success(function(data) {
-          vm.myGearRentals = data;
+          vm.myGearItem = data;
           console.log('success getting this gears rentals from remote api');
         })
         .error(function(data, status, headers, config) {
@@ -38,7 +45,7 @@
     // PUT request to edit a gear item
     this.editMyGearItem = function() {
       myGearFactory.editMyGearItem(gearId, {
-        product: vm.myGearRentals
+        product: vm.myGearItem
       })
         .success(function() {
           console.log('success updating item');

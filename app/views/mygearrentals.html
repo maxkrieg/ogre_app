@@ -17,16 +17,16 @@
 
           <!-- product image -->
           <div class="col s4">
-            <img src="{{myGearRentalsCtrl.myGearRentals.image_src}}" alt="" class="responsive-img">
+            <img src="{{myGearRentalsCtrl.myGearItem.image_src}}" alt="" class="responsive-img">
           </div>
 
           <!-- product title and description -->
           <div class="col s6">
             <span class="black-text">
-              <h3>{{myGearRentalsCtrl.myGearRentals.title}}</h3>
-              <h6>{{myGearRentalsCtrl.myGearRentals.description}}</h6>
-              <p>{{myGearRentalsCtrl.myGearRentals.daily_cost | currency }} / day</p>
-              <p>{{myGearRentalsCtrl.myGearRentals.category}}</p>
+              <h3>{{myGearRentalsCtrl.myGearItem.title}}</h3>
+              <h6>{{myGearRentalsCtrl.myGearItem.description}}</h6>
+              <p>{{myGearRentalsCtrl.myGearItem.daily_cost | currency }} / day</p>
+              <p>{{myGearRentalsCtrl.myGearItem.category}}</p>
             </span>
           </div>
 
@@ -45,13 +45,13 @@
             <div class="row">
               <!-- Title -->
               <div class="input-field col s6">
-                <input id="title" type="text" name="title" class="validate" ng-model="myGearRentalsCtrl.myGearRentals.title">
+                <input id="title" type="text" name="title" class="validate" ng-model="myGearRentalsCtrl.myGearItem.title">
                 <label for="title" class="active">Title</label>
               </div>
               <!-- Daily Cost -->
               <div class="input-field col s3">
                 <i class="material-icons prefix tiny">attach_money</i>
-                <input id="daily_cost" type="text" name="daily_cost" ng-model="myGearRentalsCtrl.myGearRentals.daily_cost" ng-pattern="/^[1-9]\d*(?:\.\d{0,2})?$/">
+                <input id="daily_cost" type="text" name="daily_cost" ng-model="myGearRentalsCtrl.myGearItem.daily_cost" ng-pattern="/^[1-9]\d*(?:\.\d{0,2})?$/">
                 <label for="daily_cost" class="active">Daily Cost</label>
                 <div ng-show="newGearFormNg.daily_cost.$invalid">
                   You must enter a valid price.
@@ -59,7 +59,7 @@
               </div>
               <!-- Category -->
               <div class="input-field col s3">
-                <select id="daily_cost" class="browser-default" material-select ng-model="myGearRentalsCtrl.myGearRentals.category" ng-options="obj.id as obj.name group by obj.type for obj in myGearRentalsCtrl.categoryOptions">
+                <select id="daily_cost" class="browser-default" material-select ng-model="myGearRentalsCtrl.myGearItem.category" ng-options="obj.id as obj.name group by obj.type for obj in myGearRentalsCtrl.categoryOptions">
                 </select>
                 <label for="daily_cost" class="active">Category</label>
               </div>
@@ -68,7 +68,7 @@
             <div class="row">
               <!-- Description -->
               <div class="input-field col s6">
-                <textarea id="description" name="description" class="materialize-textarea" ng-model="myGearRentalsCtrl.myGearRentals.description"></textarea>
+                <textarea id="description" name="description" class="materialize-textarea" ng-model="myGearRentalsCtrl.myGearItem.description"></textarea>
                 <label for="description" class="active">Description</label>
               </div>
               <!-- Image Upload -->
@@ -77,7 +77,7 @@
                   <div class="file-field input-field">
                     <div class="btn">
                       <span>Upload Image</span>
-                      <input type="file" id="file" ng-model="createNewGearCtrl.newGearItem.image">
+                      <input type="file" id="file" accept="image/*" ng-file-select ngf-select="true" ng-model="">
                     </div>
                     <div class="file-path-wrapper">
                       <input class="file-path validate" type="text" class="show">
@@ -87,7 +87,7 @@
               </div>
             </div>
           </form>
-          <a class="waves-effect waves-light btn btn-small" ng-click="showEditForm = !showEditForm; myGearRentalsCtrl.editMyGearItem()">Save Changes</a>
+          <a class="waves-effect waves-light btn btn-small" ng-click="showEditForm = !showEditForm; myGearRentalsCtrl.editMyGearItem(); myGearRentalsCtrl.showEditGearToast()">Save Changes</a>
           <a class="waves-effect waves-light btn btn-small red" ng-click="myGearRentalsCtrl.deleteMyGearItem()">Delete Item</a>
         </div>
       </div>
@@ -102,7 +102,7 @@
       <ul class="collection">
 
         <!-- rental collection item repeat -->
-        <li class="collection-item" ng-repeat="rental in myGearRentalsCtrl.myGearRentals.rentals">
+        <li class="collection-item" ng-repeat="rental in myGearRentalsCtrl.myGearItem.rentals">
           <div class="row">
 
             <!-- rental information -->
@@ -124,10 +124,7 @@
                 </select>
 
               </div>
-              <a class="waves-effect waves-light btn btn-small" ng-click="myGearRentalsCtrl.editMyGearRental({status: rental.status}, rental.id);">Save</a>
-              <div ng-show="myGearRentalsCtrl.showSavedMessage">
-                <i class="material-icons">check</i> Saved
-              </div>
+              <a class="waves-effect waves-light btn btn-small" ng-click="myGearRentalsCtrl.editMyGearRental({status: rental.status}, rental.id); myGearRentalsCtrl.showStatusToast()">Save</a>
             </div>
 
           </div>

@@ -17,7 +17,7 @@
 
           <!-- product image -->
           <div class="col s4">
-            <img src="{{myGearRentalsCtrl.myGearRentals.image_src}}" alt="" class="circle responsive-img">
+            <img src="{{myGearRentalsCtrl.myGearRentals.image_src}}" alt="" class="responsive-img">
           </div>
 
           <!-- product title and description -->
@@ -59,9 +59,9 @@
               </div>
               <!-- Category -->
               <div class="input-field col s3">
-                <select class="browser-default" material-select ng-model="myGearRentalsCtrl.myGearRentals.category" ng-options="obj.id as obj.name group by obj.type for obj in myGearRentalsCtrl.categoryOptions">
-                  <option value="default" disabled selected>Poop</option>
+                <select id="daily_cost" class="browser-default" material-select ng-model="myGearRentalsCtrl.myGearRentals.category" ng-options="obj.id as obj.name group by obj.type for obj in myGearRentalsCtrl.categoryOptions">
                 </select>
+                <label for="daily_cost" class="active">Category</label>
               </div>
             </div>
 
@@ -117,33 +117,23 @@
             <!-- rental status update -->
             <div class="col s4">
               <h6><strong>Update Rental Status</strong></h6>
-              <div class="input-field">
+              <div class="input-field" ng-click="myGearRentalsCtrl.showSavedMessage = false">
                 <select class="browser-default" material-select ng-model="rental.status">
                     <option>{{rental.status}}</option>
                     <option>{{myGearRentalsCtrl.otherStatusOption(rental.status)}}</option>
                 </select>
-              </div>
-              <a class="waves-effect waves-light btn btn-small" ng-click="myGearRentalsCtrl.editMyGearRental({status: rental.status}, rental.id)">Save</a>
 
+              </div>
+              <a class="waves-effect waves-light btn btn-small" ng-click="myGearRentalsCtrl.editMyGearRental({status: rental.status}, rental.id);">Save</a>
+              <div ng-show="myGearRentalsCtrl.showSavedMessage">
+                <i class="material-icons">check</i> Saved
+              </div>
             </div>
 
           </div>
         </li> <!-- /rental collection item repeat -->
 
       </ul>
-
-      <!-- TO DELETE: HELPER OBJECT DISPLAY -->
-      <div>
-        myGearRentalsCtrl.myGearRentals:
-        <br>
-        {{myGearRentalsCtrl.myGearRentals}}
-      </div>
-      <br>
-      <div>
-        myGearRentalsCtrl.myGearRentals.rentals:
-        <br>
-        {{myGearRentalsCtrl.myGearRentals.rentals}}
-      </div>
 
     </div>
   </div>

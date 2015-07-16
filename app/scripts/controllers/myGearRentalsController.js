@@ -9,6 +9,8 @@
     var vm = this;
     vm.appSettings = appSettings;
     vm.myGearRentals = {};
+    vm.showSavedMessage = false;
+
 
     // GET request when hitting this route, gets gear item for view
     function init() {
@@ -62,6 +64,7 @@
       myGearRentalFactory.editMyGearRental(gearId, rentalId, rentalData)
         .success(function() {
           console.log('success updating rental on my product');
+          vm.showSavedMessage = true;
         })
         .error(function() {
           console.log('error updating rental on my product, but you were so close');
@@ -71,8 +74,6 @@
     // Pulling in category options from createNewGearFactory
     this.categoryOptions = createNewGearFactory.gearCategories;
 
-    this.toastDuration = 1000;
-    this.toastMessage = 'Changes Saved';
   };
 
   // Prevent the minifier from breaking dependency injection.

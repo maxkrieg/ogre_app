@@ -8,7 +8,6 @@ main {
 }
 
 body {
-  padding: 0;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -41,9 +40,24 @@ body {
   color: grey;
 }
 
+#main-page-ogre {
+  height: 350px;
+  width: 325px;
+}
+
+#navbar-ogre {
+  height: 40px;
+  width: 35px;
+}
+
+
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
     // max-width: 730px;
+  }
+  #brand-logo {
+    margin-left: 15px;
   }
 }

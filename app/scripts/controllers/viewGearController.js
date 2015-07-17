@@ -2,7 +2,7 @@
 
 (function viewGearControllerIIFE() {
 
-  var ViewGearController = function($routeParams, allGearFactory, appSettings, $location, myRentalsFactory) {
+  var ViewGearController = function($routeParams, allGearFactory, appSettings, $location, myRentalsFactory, $route) {
 
     // Getting gear id from route
     var gearId = $routeParams.gear_id;
@@ -12,6 +12,9 @@
     vm.newRental = {};
     vm.newRental.status = "pending";
     vm.gearItem = {};
+    vm.showRentalSave = function() {
+      Materialize.toast('Rental Submitted!', 2000);
+    };
 
 
     // GET request when hitting this route, gets gear item for view
@@ -41,8 +44,9 @@
       myRentalsFactory.createRental(gearId, {
         rental: vm.newRental
       })
-        .success(function(data) {
+        .success(function() {
           console.log('success adding new gear');
+          $route.reload();
         })
         .error(function(data, status, headers, config) {
           console.log("Error creating new gear item");
@@ -52,7 +56,7 @@
   };
 
   // Prevent the minifier from breaking dependency injection.
-  ViewGearController.$inject = ['$routeParams', 'allGearFactory', 'appSettings', '$location', 'myRentalsFactory'];
+  ViewGearController.$inject = ['$routeParams', 'allGearFactory', 'appSettings', '$location', 'myRentalsFactory', '$route'];
 
   // The Controller is part of the module.
   angular.module('ogreApp').controller('viewGearController', ViewGearController);

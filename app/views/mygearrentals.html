@@ -74,18 +74,17 @@
               <!-- Image Upload -->
               <div class="col s6">
                 <div class="form-group">
-                    <label>Gear Photo</label>
+                    <label>Update Gear Photo</label>
                     <input type="file" accept="image/*" ng-file-select ngf-select="true" ng-model="myGearRentalsCtrl.myGearItem.image">
                 </div>
               </div>
             </div>
           </form>
-          <a class="waves-effect waves-light btn btn-small" ng-click="showEditForm = !showEditForm; myGearRentalsCtrl.editMyGearItem(); myGearRentalsCtrl.showEditGearToast()">Save Changes</a>
+          <a class="waves-effect waves-light btn btn-small orange" ng-click="showEditForm = !showEditForm; myGearRentalsCtrl.editMyGearItem(); myGearRentalsCtrl.showEditGearToast()">Save Changes</a>
           <a class="waves-effect waves-light btn btn-small red" ng-click="myGearRentalsCtrl.deleteMyGearItem()">Delete Item</a>
         </div>
       </div>
     </div>
-    {{myGearRentalsCtrl.myGearItem}}
   </div> <!-- /Edit Item Form -->
 
 

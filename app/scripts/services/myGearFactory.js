@@ -23,15 +23,6 @@
       });
     };
 
-    // Edit one gear item // OLD
-    // factory.editMyGearItem = function(gearId, data) {
-    //   return $http.put(this.appSettings.railsURI + '/myproducts/' + gearId, data, {
-    //     headers: {
-    //       Authorization: 'Token token=' + localStorage.getItem('token')
-    //     }
-    //   });
-    // };
-
     // Edit one gear item // NEW
     factory.editMyGearItem = function(file, gearId, data) {
       return Upload.upload({

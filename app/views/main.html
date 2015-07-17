@@ -24,7 +24,7 @@
   <!-- Results Row -->
   <div class="row">
     <!-- Gear Results -->
-    <div class="col s12 m6" ng-repeat="gear in mainCtrl.gearResults">
+    <div class="col s12 m6" ng-repeat="gear in mainCtrl.gearResults | orderBy: gear.title">
       <div class="card">
         <div class="card-image">
           <img src="{{gear.image_src}}">
@@ -32,7 +32,7 @@
         </div>
         <div class="card-content">
           <p>{{gear.description}}</p>
-          <p>{{gear.daily_cost | currency}}/day</p>
+          <p>{{gear.daily_cost | currency}}/day | {{gear.owner_city}}, {{gear.owner_state}}</p>
         </div>
         <div class="card-action">
           <a href="#/viewgear/{{gear.id}}">View Gear</a>
@@ -42,7 +42,7 @@
 
 
     <!-- Friend Results -->
-    <div class="col s12 m6" ng-repeat="group in mainCtrl.friendResults">
+    <div class="col s12 m6" ng-repeat="group in mainCtrl.friendResults | orderBy: group.name">
       <div class="card large">
         <div class="card-image">
           <img src="{{group.group_photo.photo_link}}">

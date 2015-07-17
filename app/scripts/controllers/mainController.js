@@ -2,13 +2,16 @@
 
 (function mainControllerIIFE() {
 
-  var MainController = function(appSettings, searchFactory) {
+  var MainController = function(appSettings, searchFactory, createNewGearFactory) {
     var vm = this;
     vm.appSettings = appSettings;
     vm.searchQuery = "";
     vm.userZip = "";
     vm.gearResults = [];
     vm.friendResults = [];
+
+    this.categoryOptions = createNewGearFactory.gearCategories;
+    this.gearCategory = "default";
 
     // Get current user when they hit main search page
     function init() {
@@ -59,7 +62,7 @@
     };
   };
 
-  MainController.$inject = ['appSettings', 'searchFactory'];
+  MainController.$inject = ['appSettings', 'searchFactory', 'createNewGearFactory'];
 
   angular.module('ogreApp').controller('mainController', MainController);
 

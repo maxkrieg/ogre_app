@@ -11,9 +11,9 @@
           <span class="card-title">{{viewGearCtrl.gearItem.title}}</span>
         </div>
         <div class="card-content">
-          <p>{{viewGearCtrl.gearItem.description}}</p>
-          <p>Daily Cost: {{viewGearCtrl.gearItem.daily_cost | currency}}/day</p>
-          <p>Owner: {{viewGearCtrl.gearItem.owner_name}}</p>
+          <p><strong>Description:</strong> {{viewGearCtrl.gearItem.description}}</p>
+          <p><strong>Cost:</strong> {{viewGearCtrl.gearItem.daily_cost | currency}}/day</p>
+          <p><strong>Owner:</strong> {{viewGearCtrl.gearItem.owner_name}} | {{viewGearCtrl.gearItem.owner_city}}, {{viewGearCtrl.gearItem.owner_state}}</p>
         </div>
         <div class="card-action">
           <a ng-click="showRentalForm = !showRentalForm">Rent This Gear</a>

@@ -13,6 +13,10 @@ body {
   flex-direction: column;
 }
 
+#welcome-page-banner {
+  background: red;
+}
+
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
@@ -33,6 +37,20 @@ body {
   .btn {
     font-size: 20px;
   }
+}
+
+.card-title {
+  text-shadow:
+      0 1px #808d93,
+      -1px 0 #cdd2d5,
+      -1px 2px #808d93,
+      -2px 1px #cdd2d5,
+      -2px 3px #808d93,
+      -3px 2px #cdd2d5,
+}
+
+#my-gear-rentals-panel {
+  margin-top: 35px;
 }
 
 #edit-product:hover {

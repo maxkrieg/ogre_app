@@ -45,6 +45,12 @@
       searchFactory.searchFriends(vm.userZip, vm.searchQuery)
         .success(function(data) {
           console.log('success finding relevant meetups');
+          data.forEach(function(group) {
+            if (!group.group_photo) {
+              group.group_photo = {};
+              group.group_photo.photo_link = 'images/ogre1.png';
+            }
+          });
           vm.friendResults = data;
         })
         .error(function() {

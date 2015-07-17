@@ -73,17 +73,10 @@
               </div>
               <!-- Image Upload -->
               <div class="col s6">
-                <form action="#">
-                  <div class="file-field input-field">
-                    <div class="btn">
-                      <span>Upload Image</span>
-                      <input type="file" id="file" accept="image/*" ng-file-select ngf-select="true" ng-model="">
-                    </div>
-                    <div class="file-path-wrapper">
-                      <input class="file-path validate" type="text" class="show">
-                    </div>
-                  </div>
-                </form>
+                <div class="form-group">
+                    <label>Gear Photo</label>
+                    <input type="file" accept="image/*" ng-file-select ngf-select="true" ng-model="myGearRentalsCtrl.myGearItem.image">
+                </div>
               </div>
             </div>
           </form>
@@ -92,6 +85,7 @@
         </div>
       </div>
     </div>
+    {{myGearRentalsCtrl.myGearItem}}
   </div> <!-- /Edit Item Form -->
 
 
@@ -129,6 +123,10 @@
 
           </div>
         </li> <!-- /rental collection item repeat -->
+
+        <li class="collection-item" ng-show="!myGearRentalsCtrl.noRentals()">
+          <h5>No rentals on this gear.</h5>
+        </li>
 
       </ul>
 

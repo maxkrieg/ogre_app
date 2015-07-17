@@ -6,6 +6,9 @@
     var vm = this;
     vm.appSettings = appSettings;
     vm.myGear = [];
+    vm.noGear = function() {
+      return vm.myGear.length >= 1;
+    };
 
     function init() {
       myGearFactory.getMyGear()

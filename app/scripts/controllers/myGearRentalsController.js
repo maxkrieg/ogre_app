@@ -2,7 +2,7 @@
 
 (function myGearRentalsControllerIIFE() {
 
-  var MyGearRentalsController = function($routeParams, myGearFactory, appSettings, createNewGearFactory, myGearRentalFactory, $location) {
+  var MyGearRentalsController = function($routeParams, myGearFactory, appSettings, createNewGearFactory, myGearRentalFactory, $location, $route) {
 
     // Getting gear id from route
     var gearId = $routeParams.gear_id;
@@ -16,6 +16,11 @@
 
     vm.showEditGearToast = function() {
       Materialize.toast('Gear Updated!', 2000);
+    };
+
+    vm.noRentals = function() {
+      console.log(vm.myGearItem.rentals);
+      return vm.myGearItem.rentals.length >= 1;
     };
 
 
@@ -42,16 +47,16 @@
       }
     };
 
-    // PUT request to edit a gear item
+    // PUT request to edit a gear item // NEW
     this.editMyGearItem = function() {
-      myGearFactory.editMyGearItem(gearId, {
-        product: vm.myGearItem
-      })
+      var file = vm.myGearItem.image;
+      myGearFactory.editMyGearItem(file, gearId, vm.myGearItem)
         .success(function() {
           console.log('success updating item');
+          $route.reload();
         })
-        .error(function() {
-          console.log('error updating item');
+        .error(function(data, status, headers, config) {
+          console.log("error updating item: " + status);
         });
     };
 
@@ -84,7 +89,7 @@
   };
 
   // Prevent the minifier from breaking dependency injection.
-  MyGearRentalsController.$inject = ['$routeParams', 'myGearFactory', 'appSettings', 'createNewGearFactory', 'myGearRentalFactory', '$location'];
+  MyGearRentalsController.$inject = ['$routeParams', 'myGearFactory', 'appSettings', 'createNewGearFactory', 'myGearRentalFactory', '$location', '$route'];
 
   // The Controller is part of the module.
   angular.module('ogreApp').controller('myGearRentalsController', MyGearRentalsController);

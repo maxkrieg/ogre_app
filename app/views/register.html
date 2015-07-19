@@ -22,7 +22,7 @@
             <label for="city">City</label>
           </div>
           <div class="input-field col s4">
-            <select class="browser-default" material-select ng-model="regCtrl.regForm.state" >
+            <select class="browser-default" material-select ng-model="regCtrl.regForm.state">
                 <option value="" disabled selected>State</option>
                 <option ng-repeat="state in regCtrl.stateOptions">{{state}}</option>
             </select>
@@ -56,11 +56,11 @@
         <div class="row">
           <div class="input-field col s6">
             <input id="confirmPassword" type="password" name = "confirmPassword" class="validate" ng-model="regCtrl.confirmPassword" required>
-            <label for="confirmPassword">Please enter your password again</label>
+            <label for="confirmPassword">Please confirm your password.</label>
           </div>
         </div>
         <!--  Password Match Message-->
-        <div ng-show="regCtrl.passwordVerify">
+        <div ng-show="!regCtrl.passwordVerify()">
           Passwords must match
         </div>
       </form>

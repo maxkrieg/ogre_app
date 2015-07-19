@@ -27,8 +27,6 @@
                 <option value="default" disabled selected>Select a Category</option>
             </select>
           </div>
-
-
         </div>
 
         <div class="row">
@@ -43,6 +41,9 @@
             <div class="form-group">
                 <label>Gear Photo</label>
                 <input type="file" accept="image/*" ng-file-select ngf-select="true" ng-model="createNewGearCtrl.newGearItem.image">
+            </div>
+            <div ng-show="createNewGearCtrl.imageMessage()">
+              You must upload a photo of your item.
             </div>
 
           </div>

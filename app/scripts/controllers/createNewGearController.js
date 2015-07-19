@@ -11,7 +11,10 @@
     vm.newGearItem.description = "";
     vm.newGearItem.daily_cost = "";
     vm.newGearItem.category = "default";
-    vm.newGearItem.image = "";
+    // vm.newGearItem.image = "";
+    vm.imageMessage = function() {
+      return !vm.newGearItem.image;
+    };
 
     this.createNewGear = function() {
       var file = vm.newGearItem.image;

@@ -15,7 +15,6 @@
     vm.regForm.state = "";
     vm.regForm.zip = "";
 
-
     this.createUser = function() {
       registerFactory.createUser({
         user: vm.regForm
@@ -31,8 +30,7 @@
     };
 
     this.passwordVerify = function() {
-      // return vm.regForm.password === vm.confirmPassword;
-      return false;
+      return vm.regForm.password === vm.confirmPassword;
     };
 
     this.stateOptions = registerFactory.stateOptions;

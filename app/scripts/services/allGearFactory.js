@@ -24,7 +24,7 @@
       });
     };
 
-    return factory; /* Make this factory accessible */
+    return factory;
   };
 
   allGearFactory.$inject = ['$http', 'appSettings'];

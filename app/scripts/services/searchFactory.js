@@ -29,7 +29,7 @@
       return $http.get(this.appSettings.railsURI + '/searchmeetup/?radius=25&page=25&zip=' + userZip + '&text=' + searchParams);
     };
 
-    return factory; /* Make this factory accessible */
+    return factory;
   };
 
   searchFactory.$inject = ['$http', 'appSettings'];

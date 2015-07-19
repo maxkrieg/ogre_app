@@ -14,6 +14,7 @@
         }
       });
     };
+
     // Get one gear item
     factory.getMyGearItem = function(gearId) {
       return $http.get(this.appSettings.railsURI + '/myproducts/' + gearId, {
@@ -23,7 +24,7 @@
       });
     };
 
-    // Edit one gear item // NEW
+    // Edit one gear item
     factory.editMyGearItem = function(file, gearId, data) {
       return Upload.upload({
         url: this.appSettings.railsURI + '/myproducts/' + gearId,
@@ -42,10 +43,6 @@
       });
     };
 
-
-
-
-
     // Delete one gear item
     factory.deleteMyGearItem = function(gearId) {
       return $http.delete(this.appSettings.railsURI + '/myproducts/' + gearId, {
@@ -55,7 +52,7 @@
       });
     };
 
-    return factory; /* Make this factory accessible */
+    return factory;
   };
 
   myGearFactory.$inject = ['$http', 'appSettings', 'Upload'];

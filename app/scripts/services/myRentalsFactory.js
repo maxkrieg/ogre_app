@@ -14,6 +14,7 @@
         }
       });
     };
+
     // Get one rental
     factory.getMyRental = function(rentalId) {
       return $http.get(this.appSettings.railsURI + '/myrentals/' + rentalId, {
@@ -22,6 +23,7 @@
         }
       });
     };
+
     // Edit one rental
     factory.editMyRental = function(rentalId, data) {
       return $http.put(this.appSettings.railsURI + '/myrentals/' + rentalId, data, {
@@ -30,6 +32,7 @@
         }
       });
     };
+
     // Delete one rental
     factory.deleteMyRental = function(rentalId) {
       return $http.delete(this.appSettings.railsURI + '/myrentals/' + rentalId, {
@@ -48,7 +51,7 @@
       });
     };
 
-    return factory; /* Make this factory accessible */
+    return factory;
   };
 
   myRentalsFactory.$inject = ['$http', 'appSettings'];

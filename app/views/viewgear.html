@@ -60,7 +60,7 @@
             </div>
 
           </form>
-          <a class="waves-effect waves-light btn btn-small" ng-click="viewGearCtrl.createRental(); viewGearCtrl.showRentalSave()">Submit</a>
+          <a class="waves-effect waves-light btn btn-small" ng-click="viewGearCtrl.createRental(); viewGearCtrl.showRentalSave();">Submit</a>
           <a class="waves-effect waves-light btn btn-small red" ng-click="showRentalForm = !showRentalForm">Cancel</a>
         </div>
       </div>
@@ -78,6 +78,10 @@
           <strong>From:</strong> {{ rental.start_date | date }} <br>
           <strong>To:</strong> {{ rental.end_date | date }}
         </li> <!-- /rental collection item repeat -->
+
+        <li class="collection-item" ng-show="!viewGearCtrl.noRentals()">
+          <h5>No rentals on this gear.</h5>
+        </li>
       </ul>
     </div> <!-- /column in product rentals row -->
   </div> <!-- /product rentals row -->

@@ -11,12 +11,15 @@
     vm.newGearItem.description = "";
     vm.newGearItem.daily_cost = "";
     vm.newGearItem.category = "default";
-    // vm.newGearItem.image = "";
     vm.imageMessage = function() {
       return !vm.newGearItem.image;
     };
 
-    this.createNewGear = function() {
+    vm.createGearToast = function() {
+      Materialize.toast('Gear being created, you will be redirected back to your gear page.', 3000);
+    };
+
+    vm.createNewGear = function() {
       var file = vm.newGearItem.image;
       createNewGearFactory.createNewGear(file, vm.newGearItem)
         .success(function() {
@@ -28,7 +31,7 @@
         });
     };
 
-    this.categoryOptions = createNewGearFactory.gearCategories;
+    vm.categoryOptions = createNewGearFactory.gearCategories;
   };
 
   CreateNewGearController.$inject = ['createNewGearFactory', 'appSettings', '$location', 'Upload'];

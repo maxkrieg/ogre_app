@@ -16,6 +16,10 @@
       Materialize.toast('Rental Submitted!', 2000);
     };
 
+    vm.noRentals = function() {
+      console.log(vm.gearItem.rentals);
+      return vm.gearItem.rentals.length >= 1;
+    };
 
     // GET request when hitting this route, gets gear item for view
     function init() {
@@ -40,7 +44,7 @@
       return cost;
     };
 
-    this.createRental = function() {
+    vm.createRental = function() {
       myRentalsFactory.createRental(gearId, {
         rental: vm.newRental
       })

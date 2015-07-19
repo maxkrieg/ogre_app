@@ -10,7 +10,7 @@
     vm.loginForm.password = "";
 
 
-    this.authenticateUser = function() {
+    vm.authenticateUser = function() {
       console.log(vm.loginForm);
 
       loginFactory.authenticateUser({

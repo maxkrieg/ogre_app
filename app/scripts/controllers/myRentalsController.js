@@ -26,12 +26,12 @@
         });
     }
     init();
-    this.rentalStatusApproved = function(status) {
+    vm.rentalStatusApproved = function(status) {
       return status === "approved";
     };
 
     // DELETE rental
-    this.deleteMyRental = function(rentalId) {
+    vm.deleteMyRental = function(rentalId) {
       myRentalsFactory.deleteMyRental(rentalId)
         .success(function() {
           console.log('success deleting rental');

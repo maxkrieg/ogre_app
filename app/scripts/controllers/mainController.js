@@ -10,9 +10,6 @@
     vm.gearResults = [];
     vm.friendResults = [];
 
-    this.categoryOptions = createNewGearFactory.gearCategories;
-    this.gearCategory = "default";
-
     // Get current user when they hit main search page
     function init() {
       searchFactory.getUser()
@@ -28,7 +25,7 @@
     init();
 
     // Search Gear
-    this.searchGear = function() {
+    vm.searchGear = function() {
       vm.gearResults = [];
       vm.friendResults = [];
       searchFactory.searchGear(vm.searchQuery)
@@ -42,7 +39,7 @@
     };
 
     // Search Friends
-    this.searchFriends = function() {
+    vm.searchFriends = function() {
       vm.gearResults = [];
       vm.friendResults = [];
       searchFactory.searchFriends(vm.userZip, vm.searchQuery)

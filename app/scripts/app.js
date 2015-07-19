@@ -10,9 +10,7 @@
   app.config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/welcome.html',
-        controller: 'welcomeController',
-        controllerAs: 'welcomeCtrl'
+        templateUrl: 'views/welcome.html'
       })
       .when('/login', {
         templateUrl: 'views/login.html',

@@ -35,6 +35,7 @@
     }
     init();
 
+
     vm.totalCost = function(startDate, endDate) {
       var start = Date.parse(startDate);
       var end = Date.parse(endDate);

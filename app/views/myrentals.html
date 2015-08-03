@@ -18,7 +18,7 @@
               <p><strong>Status:</strong> {{rental.status}}</p>
               <p><strong>Message from You:</strong> {{rental.message}}</p>
               <a id="" class="btn waves-effect waves-light orange" href="#/viewgear/{{rental.product_id}}">View Gear</a>
-              <a id="" class="btn waves-effect waves-light red" ng-click="myRentalsCtrl.deleteMyRental(rental.id); myRentalsCtrl.showDeleteToast()">Delete Rental</a>
+              <a id="" class="btn waves-effect waves-light red" ng-click="myRentalsCtrl.deleteMyRental(rental.id, $index)">Delete Rental</a>
             </div> <!-- /col -->
 
             <!-- owner information for contact -->
@@ -41,6 +41,7 @@
 
           </div><!-- /row -->
         </li> <!-- /rental collection item repeat -->
+
         <li class="collection-item" ng-show="!myRentalsCtrl.noRentals()">
           <h5>You don't have any rentals.  Search for rentals <a href="#/main">here</a>.</h5>
 

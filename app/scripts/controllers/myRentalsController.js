@@ -22,7 +22,6 @@
         })
         .error(function(data, status, headers, config) {
           console.log("Error getting my gear from the remote api");
-          // alert("Error getting my gear from the remote api");
         });
     }
     init();
@@ -31,11 +30,12 @@
     };
 
     // DELETE rental
-    vm.deleteMyRental = function(rentalId) {
+    vm.deleteMyRental = function(rentalId, index) {
       myRentalsFactory.deleteMyRental(rentalId)
         .success(function() {
           console.log('success deleting rental');
-          $route.reload();
+          vm.myRentals.splice(index, 1);
+          vm.showDeleteToast();
         })
         .error(function() {
           console.log('error deleting gear item');

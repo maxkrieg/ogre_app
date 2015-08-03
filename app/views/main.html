@@ -26,10 +26,10 @@
   <div class="row">
     <!-- Gear Results -->
     <div class="col s12 m6" ng-repeat="gear in mainCtrl.gearResults | orderBy: gear.title">
-      <div class="card">
+      <div class="card medium">
         <div class="card-image">
           <img src="{{gear.image_src}}">
-          <span class="card-title">{{gear.title}}</span>
+          <span class="card-title" id="gear-title">{{gear.title}}</span>
         </div>
         <div class="card-content">
           <p>{{gear.description}}</p>
@@ -44,10 +44,10 @@
 
     <!-- Friend Results -->
     <div class="col s12 m6" ng-repeat="group in mainCtrl.friendResults | orderBy: group.name">
-      <div class="card large">
+      <div class="card medium">
         <div class="card-image">
           <img src="{{group.group_photo.photo_link}}">
-          <span class="card-title">{{group.name}}</span>
+          <span class="card-title" id="group-name">{{group.name}}</span>
         </div>
         <div class="card-content">
           <p><strong>{{group.name}}</strong><br>

@@ -80,7 +80,7 @@
               </div>
             </div>
           </form>
-          <a class="waves-effect waves-light btn btn-small orange" ng-click="showEditForm = !showEditForm; myGearRentalsCtrl.editMyGearItem(); myGearRentalsCtrl.showEditGearToast()">Save Changes</a>
+          <a class="waves-effect waves-light btn btn-small orange" ng-click="showEditForm = !showEditForm; myGearRentalsCtrl.editMyGearItem()">Save Changes</a>
           <a class="waves-effect waves-light btn btn-small red" ng-click="myGearRentalsCtrl.deleteMyGearItem()">Delete Item</a>
         </div>
       </div>
@@ -117,7 +117,7 @@
                 </select>
 
               </div>
-              <a class="waves-effect waves-light btn btn-small" ng-click="myGearRentalsCtrl.editMyGearRental({status: rental.status}, rental.id); myGearRentalsCtrl.showStatusToast()">Save</a>
+              <a class="waves-effect waves-light btn btn-small" ng-click="myGearRentalsCtrl.editMyGearRental({status: rental.status}, rental.id)">Save</a>
             </div>
 
           </div>

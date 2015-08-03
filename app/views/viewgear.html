@@ -4,11 +4,11 @@
 
   <!-- product panel -->
   <div class="row">
-    <div class="col s12 m8 offset-m2">
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
       <div class="card">
         <div class="card-image">
           <img src="{{viewGearCtrl.gearItem.image_src}}">
-          <span class="card-title">{{viewGearCtrl.gearItem.title}}</span>
+          <span class="card-title" id="gear-title">{{viewGearCtrl.gearItem.title}}</span>
         </div>
         <div class="card-content">
           <p><strong>Description:</strong> {{viewGearCtrl.gearItem.description}}</p>
@@ -20,6 +20,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- Rental Request Form -->
